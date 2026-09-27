@@ -57,7 +57,7 @@ test('офлайн → онлайн: актуальная версия сохр�
   await page.route(api + '/**', (route) => offline ? route.abort('connectionrefused') : route.continue())
   await page.getByLabel('Название', { exact: true }).fill('Офлайн изменение')
   await page.getByRole('button', { name: 'Сохранить изменения' }).click()
-  await expect(page.getByRole('status')).toContainText('только в этом браузере')
+  await expect(page.getByRole('status').filter({ hasText: 'только в этом браузере' })).toBeVisible()
   offline = false
   await edit(page, item.id, 'Финальная онлайн версия')
   await page.reload()
@@ -93,7 +93,7 @@ test('локальный публичный шаблон отправляетс�
   await page.getByLabel('Категория', { exact: true }).selectOption(values.category)
   await page.getByLabel('Текст промпта', { exact: true }).fill(values.content)
   await page.getByRole('button', { name: 'Сохранить шаблон' }).click()
-  await expect(page.getByRole('status')).toContainText('только в этом браузере')
+  await expect(page.getByRole('status').filter({ hasText: 'только в этом браузере' })).toBeVisible()
   const card = page.getByRole('article').filter({ hasText: 'Новый общий шаблон' })
   await expect(card.getByRole('button', { name: 'Получить ссылку' })).toHaveCount(0)
   await card.getByRole('button', { name: 'Отправить на сервер' }).click()
