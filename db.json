@@ -1,0 +1,24 @@
+{
+  "templates": [
+    {
+      "id": 1,
+      "title": "Описание товараs",
+      "description": "Шаблон для карточки интернет-магазина",
+      "category": "Маркетинг",
+      "content": "Ты копирайтер. Напиши описание товара {{product}} для {{audience}}.",
+      "author": "student@example.com",
+      "isPublic": true,
+      "createdAt": "2026-05-20T12:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Объяснение темы",
+      "description": "Объяснение сложной темы простыми словами",
+      "category": "Обучение",
+      "content": "## Задача\nОбъясни {{topic}} простыми словами.\nIMPORTANT: приведи 3 примера.",
+      "author": "student@example.com",
+      "isPublic": true,
+      "createdAt": "2026-05-22T12:00:00.000Z"
+    }
+  ]
+}
