@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ReactNode } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, createHashRouter, RouterProvider } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 
@@ -17,7 +17,7 @@ function withLoader(element: ReactNode) {
   return <Suspense fallback={<p>Загрузка...</p>}>{element}</Suspense>
 }
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: '/',
     element: <Layout />,
@@ -34,7 +34,12 @@ const router = createBrowserRouter([
       { path: '*', element: withLoader(<NotFoundPage />) }
     ]
   }
-])
+]
+
+// GitHub Pages serves static files and cannot rewrite nested routes to index.html.
+const router = import.meta.env.MODE === 'pages'
+  ? createHashRouter(routes)
+  : createBrowserRouter(routes)
 
 export default function App() {
   return <RouterProvider router={router} />

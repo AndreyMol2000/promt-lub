@@ -214,5 +214,11 @@ export async function getShareUrl(template: PromptTemplate): Promise<string> {
   if (hasLocalChanges(template.id)) throw new Error('Сначала отправьте изменения на сервер.')
   const remote = await request<PromptTemplate>(`/templates/${encodeURIComponent(String(template.id))}`)
   if (!remote.isPublic) throw new Error('Шаблон на сервере не опубликован.')
-  return new URL(`/templates/${encodeURIComponent(String(remote.id))}`, window.location.origin).href
+  const path = `/templates/${encodeURIComponent(String(remote.id))}`
+  if (import.meta.env.MODE === 'pages') {
+    const url = new URL(import.meta.env.BASE_URL, window.location.origin)
+    url.hash = path
+    return url.href
+  }
+  return new URL(path, window.location.origin).href
 }
