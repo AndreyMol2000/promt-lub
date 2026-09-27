@@ -129,7 +129,7 @@ db.json             данные Mock API
 
 Проверена локальная production-сборка главной страницы: по 100 баллов в Performance, Accessibility, Best Practices и SEO. Отчёты: [Mobile](docs/lighthouse-mobile.html), [Desktop](docs/lighthouse-desktop.html). Это лабораторные измерения главной страницы, не всего приложения; после публикации аудит нужно повторить. Инструкция: [`docs/lighthouse.md`](docs/lighthouse.md).
 
-Ссылка на демо: **добавить после публикации**.
+Ссылка на демо: [Prompt Lab на GitHub Pages](https://andreymol2000.github.io/promt-lub/).
 
 Подготовка API, переменной окружения и прямых ссылок: [`docs/deployment.md`](docs/deployment.md).
 
